@@ -13,12 +13,35 @@
 		<h1>drag and drop!</h1>
 		<p>solve the puzzle</p>
 	</header>
+	
 	<section id="game-boards">
-		
+
+		<!-- these are the draggable pieces -->
+		 <div id="puzzle-pieces">
+			<img src="images/topLeft0.jpg" class="puzzle-image" alt="Top Left Piece">
+			<img src="images/topRight0.jpg" class="puzzle-image" alt="Top Right Piece">
+			<img src="images/bottomLeft0.jpg" class="puzzle-image" alt="Bottom Left Piece">
+			<img src="images/bottomRight0.jpg" class="puzzle-image" alt="Bottom Right Piece">
+		 </div>
+
+		 <!-- dropzone, where we want to drop the pieces -->
+		  <div class="puzzle-board">
+			<div class="drop-zone tl"></div>
+			<div class="drop-zone tr"></div>
+			<div class="drop-zone bl"></div>
+			<div class="drop-zone br"></div>
+		  </div>
+
 	</section>
 
 	<footer>
-		
+		<p>Click on the thumbnail to change pieces</p>
+		<nav id="buttonHolder">
+			<img src="images/buttonZero.jpg" id="0" alt="Puzzle 1">
+			<img src="images/buttonOne.jpg" id="1" alt="Puzzle 2">
+			<img src="images/buttonTwo.jpg" id="2" alt="Puzzle 3">
+			<img src="images/buttonThree.jpg" id="3" alt="Puzzle 4">
+		</nav>
 	</footer>
 
 	<script src="js/main.js"></script>
