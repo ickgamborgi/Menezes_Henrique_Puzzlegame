@@ -11,7 +11,7 @@ let draggedPiece;
 
 // functions
 function changeBGImage(event) {
-    console.log(event.currentTarget.id);
+    console.log("User clicked on " + this.alt);
     const puzzleId = event.currentTarget.id;
     puzzleBoard.style.backgroundImage = `url('./images/backGround${puzzleId}.jpg')`; // For bug fix #5, we added the puzzleId variable and inside the string.
 
@@ -24,16 +24,18 @@ function changeBGImage(event) {
 }
 
 function handleStartDrag() {
-    console.log(`started dragging ${this}`);
+    console.log(`User started dragging ${this}.`);
     draggedPiece = this;
 }
 
 function handleOver(e) {
     e.preventDefault();
-    console.log("Dragged Over");
+    console.log("User stopped dragging.");
 }
 
 function handleDrop() {
+    console.log("User dropped the piece.")
+    
     // Here is where the fix for bug #1 will come — we will add an if/else statement so the piece can't be dropped if there is already one filling it.
     if (this.childNodes.length > 0) {
         return; // If there's already a child in the drop zone, do nothing = don't allow it to be dropped.
@@ -44,6 +46,7 @@ function handleDrop() {
 
 // For bug #3, we will define the function for the reset button, bringing all pieces back.
 function reset() {
+    console.log ("User clicked to reset the puzzle.");
 
     // Bring the pieces back to original div.
     puzzlePieces.forEach(piece => {
