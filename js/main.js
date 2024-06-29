@@ -5,7 +5,8 @@ const theButtons = document.querySelectorAll("#buttonHolder img");
 const puzzleBoard = document.querySelector(".puzzle-board");
 const puzzlePieces = document.querySelectorAll(".puzzle-pieces img");
 const dropZones = document.querySelectorAll(".drop-zone");
-const puzzlePieceDiv = document.querySelector(".puzzle-pieces")
+const puzzlePieceDiv = document.querySelector(".puzzle-pieces");
+const resetButton = document.querySelector("#resetBut")
 let draggedPiece;
 
 // functions
@@ -36,6 +37,12 @@ function handleDrop() {
     }
 }
 
+// For bug #3, we will define the function for the reset button, bringing all pieces back and going to first puzzle.
+function reset() {
+    puzzlePieces.forEach(piece => puzzlePieceDiv.appendChild(piece)); // Bring the pieces back to original div.
+    puzzleBoard.style.backgroundImage = `url(./images/background0.jpg)`; // Set background back to first puzzle.
+}
+
 // events
 theButtons.forEach(button => button.addEventListener("click", changeBGImage));
 
@@ -44,6 +51,9 @@ puzzlePieces.forEach(piece => piece.addEventListener("dragstart", handleStartDra
 dropZones.forEach(zone => zone.addEventListener("dragover", handleOver));
 
 dropZones.forEach(zone => zone.addEventListener("drop", handleDrop));
+
+// Here is where the fix for bug #3 starts, we will add an event listener to when the reset button is clicked and start a function.
+resetButton.addEventListener("click", reset);
 
 
 
