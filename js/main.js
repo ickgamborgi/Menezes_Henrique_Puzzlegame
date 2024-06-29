@@ -13,12 +13,12 @@ let draggedPiece;
 function changeBGImage(event) {
     console.log(event.currentTarget.id);
     const puzzleId = event.currentTarget.id;
-    puzzleBoard.style.backgroundImage = `url('./images/backGround${puzzleId}.jpg')`;
+    puzzleBoard.style.backgroundImage = `url('./images/backGround${puzzleId}.jpg')`; // For bug fix #5, we added the puzzleId variable and inside the string.
 
     // Here is where the fix for bug #2 will come — we will add a forEach loop that goes over all puzzle pieces and append them back to their original div.
     puzzlePieces.forEach(piece => {
         const pieceType = piece.getAttribute('data-piece');
-        piece.src = `./images/${pieceType}${puzzleId}.jpg`;
+        piece.src = `./images/${pieceType}${puzzleId}.jpg`; // To fix bug #5, we also added the puzzleId and pieceType variable to match the string.
         puzzlePieceDiv.appendChild(piece);
 });
 }
@@ -42,15 +42,11 @@ function handleDrop() {
     }
 }
 
-// For bug #3, we will define the function for the reset button, bringing all pieces back and going to first puzzle.
+// For bug #3, we will define the function for the reset button, bringing all pieces back.
 function reset() {
-    // Set the background to the first puzzle
-    puzzleBoard.style.backgroundImage = `url('./images/backGround0.jpg')`;
 
-    // Bring the pieces back to original div and set pieces to the first puzzle.
+    // Bring the pieces back to original div.
     puzzlePieces.forEach(piece => {
-        const pieceType = piece.getAttribute('data-piece');
-        piece.src = `./images/${pieceType}0.jpg`;
         puzzlePieceDiv.appendChild(piece);
     });
 }
