@@ -5,6 +5,7 @@ const theButtons = document.querySelectorAll("#buttonHolder img");
 const puzzleBoard = document.querySelector(".puzzle-board");
 const puzzlePieces = document.querySelectorAll(".puzzle-pieces img");
 const dropZones = document.querySelectorAll(".drop-zone");
+const puzzlePieceDiv = document.querySelector(".puzzle-pieces")
 let draggedPiece;
 
 // functions
@@ -24,7 +25,12 @@ function handleOver(e) {
 }
 
 function handleDrop() {
-    this.appendChild(draggedPiece);
+    // Here is where the fix for bug #1 will come — we will add an if/else statement so the piece can't be dropped if there is already one filling it.
+    if (this.childNodes.length > 0) {
+        return; // If there's already a child in the drop zone, do nothing = don't allow it to be dropped.
+    } else {
+        this.appendChild(draggedPiece); // Otherwise, append the dragged piece.
+    }
 }
 
 // events
