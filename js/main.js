@@ -9,10 +9,8 @@ let draggedPiece;
 
 // functions
 function changeBGImage(event) {
-    console.log("changeBGImage called");
-    console.log(this.id);
-    puzzleBoard.style.backgroundImage = `url('./images/backGround${this.id}.jpg')`;
-    // 	background-image: url('../images/backGround0.jpg');
+    console.log(event.currentTarget.id);
+    puzzleBoard.style.backgroundImage = `url('./images/backGround${event.currentTarget.id}.jpg')`;
 }
 
 function handleStartDrag() {
