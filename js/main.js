@@ -12,10 +12,15 @@ let draggedPiece;
 // functions
 function changeBGImage(event) {
     console.log(event.currentTarget.id);
-    puzzleBoard.style.backgroundImage = `url('./images/backGround${event.currentTarget.id}.jpg')`;
+    const puzzleId = event.currentTarget.id;
+    puzzleBoard.style.backgroundImage = `url('./images/backGround${puzzleId}.jpg')`;
 
     // Here is where the fix for bug #2 will come — we will add a forEach loop that goes over all puzzle pieces and append them back to their original div.
-    puzzlePieces.forEach(piece => puzzlePieceDiv.appendChild(piece));
+    puzzlePieces.forEach(piece => {
+        const pieceType = piece.getAttribute('data-piece');
+        piece.src = `./images/${pieceType}${puzzleId}.jpg`;
+        puzzlePieceDiv.appendChild(piece);
+});
 }
 
 function handleStartDrag() {
@@ -39,8 +44,15 @@ function handleDrop() {
 
 // For bug #3, we will define the function for the reset button, bringing all pieces back and going to first puzzle.
 function reset() {
-    puzzlePieces.forEach(piece => puzzlePieceDiv.appendChild(piece)); // Bring the pieces back to original div.
-    puzzleBoard.style.backgroundImage = `url(./images/background0.jpg)`; // Set background back to first puzzle.
+    // Set the background to the first puzzle
+    puzzleBoard.style.backgroundImage = `url('./images/backGround0.jpg')`;
+
+    // Bring the pieces back to original div and set pieces to the first puzzle.
+    puzzlePieces.forEach(piece => {
+        const pieceType = piece.getAttribute('data-piece');
+        piece.src = `./images/${pieceType}0.jpg`;
+        puzzlePieceDiv.appendChild(piece);
+    });
 }
 
 // events
@@ -55,16 +67,3 @@ dropZones.forEach(zone => zone.addEventListener("drop", handleDrop));
 // Here is where the fix for bug #3 starts, we will add an event listener to when the reset button is clicked and start a function.
 resetButton.addEventListener("click", reset);
 
-
-
-
-
-
-
-
-
-
-
-// METHOD 2
-// console.log(event.currentTarget.id);
-// puzzleBoard.style.backgroundImage = `url('../images/backGround$(event.currentTarget.id).jpg')`;
