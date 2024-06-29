@@ -12,6 +12,9 @@ let draggedPiece;
 function changeBGImage(event) {
     console.log(event.currentTarget.id);
     puzzleBoard.style.backgroundImage = `url('./images/backGround${event.currentTarget.id}.jpg')`;
+
+    // Here is where the fix for bug #2 will come — we will add a forEach loop that goes over all puzzle pieces and append them back to their original div.
+    puzzlePieces.forEach(piece => puzzlePieceDiv.appendChild(piece));
 }
 
 function handleStartDrag() {
