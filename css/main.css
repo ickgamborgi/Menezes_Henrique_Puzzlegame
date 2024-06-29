@@ -10,11 +10,12 @@ html {
 }
 
 body {
-	margin: 0px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 	border: 0px;
 	background-image:url(../images/puzzle2.jpg);
 	background-repeat:repeat;
-	background-color: #333;
+	background-color: #000000;
 	color:#FFF;
 	font-family: 'Luckiest Guy', sans-serif;
 	font-size:16px;
@@ -135,9 +136,10 @@ footer {
 	border-radius: 15px;
 	background-color: black;
 	color: white;
+	cursor: pointer;
 }
 
 #resetBut:hover {
-	background-color: #ffffffa7;
+	background-color: #ffffff6c;
 	color: black;
 }
